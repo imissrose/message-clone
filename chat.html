@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="ko" oncontextmenu="event.preventDefault()">
+    <head>
+        <link rel="stylesheet" href="css/style.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>채팅</title>
+    </head>
+    <body id=chat-screen onload="loadMessage();replyForm.replyInputBox.focus();">
+        <script src="https://kit.fontawesome.com/2ece379672.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/ko.js"></script>
+        <script src="./javascript/chat.js"></script>
+        <div class="status-bar">
+            <!--div class="status-bar__column">
+                <span>No Service</span>
+                <i class="fas fa-wifi"></i>
+            </div>
+            <div class="status-bar__column">
+                <span>18:43</span>
+            </div>
+            <div class="status-bar__column">
+                <span>110%</span>
+                <i class="fas fa-battery-three-quarters"></i>
+                <i class="fas fa-bolt"></i>
+            </div-->
+        </div>
+        <header class="alt-header">
+            <div class="alt_header__icon">
+                <a href="chats.html"><img src="images/arrow1.png"/><!--i class="fas fa-arrow-left fa-2x"--><!--i class="fas fa-angle-left fa-2x"></i--></a>
+            </div>
+            <div class="alt_header__column" style="vertical-align:middle;">
+                <!--img src="images/avatar.png" /--><!--이미지와 타이틀 위치조정 실패 -->
+                <!--h1 class="alt-header__title">엄마</h1-->
+                <input type="text" class="alt-header__title" name="userName" style="background-color: #F0F0F0;border:0;" onchange="modifyTitleUser();" />
+            </div>
+            <div class="alt_header__icon">
+                <span><img src="images/phone2.png"/></span>
+                <!--span><i class="fas fa-phone fa-lg" style="transform:rotateY(0.5turn)"></i></span>
+                <span><i class="fas fa-search fa-lg"></i></span>
+                <span><i class="far fa-ellipsis-vertical fa-lg"></i></span-->
+            </div>
+        </header>
+
+        <main class="main-screen main-chat" oncontextmenu="showHideDeleteCheck();">
+            <!--아래부분은 javascript로 구현했으므로 실행안되게 막음-->
+            <!--div class="chat__timestamp">
+                //Tuesday, June 30, 2021
+                2023년 2월 2일 목요일
+            </div>
+            <div class="message-row message-row--own">
+                <div class="message-row__content">
+                  <div class="message__info">
+                    <span class="message__bubble">~~</span>
+                    <span class="message__time">오후 2:27</span>
+                  </div>
+                </div>
+            </div>
+            <div class="message-row">
+                <img src="images/avatar.png" />
+                <div class="message-row__content">
+                  <span class="message__author">user</span>
+                  <div class="message__info">
+                    <span class="message__bubble">~~</span>
+                    <span class="message__time">오후 2:27</span>
+                  </div>
+                </div>
+            </div-->
+        </main>
+        <div>&nbsp;</div><div>&nbsp;</div>
+        <form class="reply" name="replyForm">
+            <div class="reply__column">
+              <input type="text" name="replyInputBox" style="background-color:#E1E1E1;" placeholder="메시지를 입력하세요." onkeypress="if(event.keyCode=='13'){event.preventDefault(); sendMessage(this.value);}" />
+              <button style="background-color:#E1E1E1" onclick="event.preventDefault();setUser();">
+                <img src="images/plus.png" style="width:80%"/>
+              </button>
+            </div>
+            <div>&nbsp;</div>
+            <div class="reply__column">
+                <button style="background-color:#5D7FFD" onclick="event.preventDefault(); sendMessage(this.form.replyInputBox.value);">
+                    <img name="sendImage" src="images/send3.png" style="border-radius:50%;width:115%"/>
+                </button>
+            </div>
+        </form>
+        <div class="delete" name="deleteForm" style="display:none;">
+            <input type="text" name="deleteCount" style="border: 0;" readonly/>
+            
+            <div class="delete__column" style="align-items: center;">
+                <button onclick="deleteComments()">삭제</button>
+                <button onclick="hideDeleteCheck()">취소 </button>
+            </div>
+        </div>
+        <div id="no-mobile">
+            <!--span>Your screen is too big ㅠㅠ</span-->
+            <span>화면 사이즈 줄여주세요</span>
+        </div>
+    </body>
+</html>

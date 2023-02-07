@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="ko" oncontextmenu="event.preventDefault()">
+    <head>
+        <link rel="stylesheet" href="css/style.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>채팅</title>
+    </head>
+    <body onload="loadChatList()">
+        <script src="https://kit.fontawesome.com/2ece379672.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/ko.js"></script>
+        <script src="./javascript/chats.js"></script>
+        <div class="status-bar">&nbsp;
+            <!--div class="status-bar__column">
+                <span>No Service</span>
+                <i class="fas fa-wifi"></i>
+            </div>
+            <div class="status-bar__column">
+                <span>18:43</span>
+            </div>
+            <div class="status-bar__column">
+                <span>110%</span>
+                <i class="fas fa-battery-three-quarters"></i>
+                <i class="fas fa-bolt"></i>
+            </div-->
+        </div>
+        <header class="screen-header">
+            <h1 class="screen-header__title">메시지</h1>
+            <div class="screen-header__icons">
+                <img src="images/search.png"/>
+                <!--span><i class="fas fa-search fa-lg"></i></span>
+                <span><i class="far fa-comment fa-lg"></i></span>
+                <span><i class="far fa-comments fa-lg"></i></span>
+                <span><i class="fas fa-cog fa-lg"></i></span-->
+            </div>
+        </header>
+        <!--form name="chatListForm" method="post"-->
+        <main class="main-screen" oncontextmenu="showHideDeleteCheck();">
+            <!--아래부분은 javascript로 구현했으므로 실행안되게 막음-->
+            <!--a href="chat.html">
+            <div class="user-component chatUser-component">
+                <div class="user-component__column">
+                    <img 
+                    src="images/avatar.png" 
+                    class="user-component__avatar user-component__avatar"
+                    alt=""/>
+                    <div class="user-component__text">
+                        <h4 class="user-component__title">엄마</h4>
+                        <h6 class="user-component__subtitle">엄마 나 이번에 로또 당첨됐잖아</h6>
+                    </div>
+                </div>
+                <div class="user-component__column">
+                    <span class = "user-component__time">오후 2:27</span>
+                    <div class="badge">1</div>
+                </div>
+            </div></a-->
+            <!--a href="chat.html">
+                <div class="user-component chatUser-component">
+                    <div class="user-component__column">
+                        <img 
+                        src="https://fujifilm.kr/products/digital_cameras/x/fujifilm_x_a10/sample_images/img/index/ff_x_a10_003.JPG" 
+                        class="user-component__avatar user-component__avatar"
+                        alt=""/>
+                        <div class="user-component__text">
+                            <h4 class="user-component__title">KB</h4>
+                            <h6 class="user-component__subtitle">Please check My Kokoa Account Info</h6>
+                        </div>
+                    </div>
+                    <div class="user-component__column">
+                        <span class = "user-component__time">21:22</span>
+                        <div class="badge">1</div>
+                    </div>
+                </div></a-->
+        </main>
+
+        <main class="main-screen" name="chatPlus" style="display:none">
+        <div class="user-component chatUser-component">
+            <div class="user-component__column">
+                <img 
+                src="images/avatar.png" 
+                class="user-component__avatar user-component__avatar"
+                alt=""/>
+                <div class="user-component__text">
+                    <input type="text" class="user-component__title" style="opacity: 1;width:300px;" name="userName" onkeypress="if(event.keyCode=='13'){event.preventDefault(); location.href='chat.html?userName='+this.value;}">
+                    <h6 class="user-component__subtitle">닉네임을 입력 후 엔터를 쳐주세요</h6>
+                    <span></span>
+                </div>
+            </div>
+            <div class="user-component__column">&nbsp;</div>
+        </div>
+        </main>
+        <div style="cursor:pointer" onclick="document.getElementsByName('chatPlus')[0].style.display='';document.getElementsByName('userName')[0].focus()" onmouseover="document.getElementsByClassName('fas fa-plus fa-lg')[0].style.display=''" onmouseleave="document.getElementsByClassName('fas fa-plus fa-lg')[0].style.display='none'">
+            <div class="user-component__column" style="padding:17px;height:30px">
+                <i class="fas fa-plus fa-lg" style="display:none"></i>
+            </div>
+        </div>
+        <div class="delete" name="deleteForm" style="z-index:1; display:none;">
+            <input type="text" name="deleteCount" style="border: 0;" readonly/>
+            
+            <div class="delete__column" style="align-items: center;">
+                <button onclick="deleteChatHistory()">삭제</button>
+                <button onclick="hideDeleteCheck()">취소 </button>
+            </div>
+        </div>
+
+        <!--/form-->
+        <!--사용안함-->
+        <nav class="nav" style="display:none">
+            <ul class="nav__list">
+                <li class="nav__btn">
+                    <a class="nav__link" href="friends.html">
+                        <i class="far fa-user fa-2x"></i></a></li>
+                <li class="nav__btn"><a class="nav__link" href="chats.html">
+                    <!--span class="nav__notification badge">1</span!-->
+                    <i class="fas fa-comment fa-2x"></i></a></li>
+                <li class="nav__btn"><a class="nav__link" href="find.html"><i class="fas fa-search fa-2x"></i></a></li>
+                <li class="nav__btn"><a class="nav__link" href="more.html">
+                    <!--span class="notification__dot dot"></span-->
+                    <i class="fas fa-ellipsis-h fa-2x"></i></a></li>
+            </ul>
+        </nav>
+        <div id="no-mobile">
+            <!--span>Your screen is too big ㅠㅠ</span-->
+            <span>화면 사이즈 줄여주세요</span>
+        </div>
+        <!--script src="https://kit.fontawesome.com/2ece379672.js" crossorigin="anonymous"></script-->
+    </body>
+</html>
