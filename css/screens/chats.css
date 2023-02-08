@@ -86,7 +86,7 @@
   /*font-size: 18px;*/
   font-size: 14px;
   /*border-radius: 15px;*/
-  border-radius: 13px;
+  border-radius: 15px;
   border-top-left-radius: 0px;
   margin-right: 5px;
 }
@@ -146,7 +146,7 @@
     padding-bottom: 5px;
     padding-top: 5px;
     padding-left: 5px;
-    padding-right: 25px;
+    padding-right: 30px;
     box-sizing: border-box;
     align-items: center;
     /*transition: all 0.3s ease-in-out;*/
@@ -167,7 +167,8 @@
 .reply input {
     padding: 14px;
     width: 100%;
-    border: var(--main-border);
+    /*border: var(--main-border);*/
+    border: 0;
     border-radius: 25px;
     box-sizing: border-box;
     /*transition: all 0.3s ease-in-out;*/
