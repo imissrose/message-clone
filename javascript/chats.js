@@ -62,14 +62,12 @@ function getMessageHTML(user, time, message) {
     messageHTML =
     //`    <a href="chat.html?userName=${user}">`+
     `    <a href="${url}">`+
-    `    <div class="user-component chatUser-component" style="cursor:pointer" id="${user}">`+
+    `    <div class="user-component chatUser-component" style="cursor:pointer;" id="${user}">`+
     `        <div class="user-component__column">`+
-    `           <input type="checkbox" name="deleteCheckBox" style="display:none;" value="${user}" onchange="displayDeleteCount(this)"/>`+
-    `           <img `+
-    `            src="images/avatar.png" `+
-    //`            src="${imagePath}" `+
-    `            class="user-component__avatar user-component__avatar"`+
-    `            alt=""/>`+
+    `            <input type="checkbox" name="deleteCheckBox" style="display:none;" value="${user}" onchange="displayDeleteCount(this)"/>`+
+    //`            <img src="images/avatar(2).png" class="user-component__avatar user-component__avatar" alt=""/>`+
+    //`            <img src="${imagePath}" class="user-component__avatar user-component__avatar" alt=""/>`+
+    `            <button style="width:40px;height:40px;border-radius:50%;background-color:#BFBFBF;border:0;font-size:20px;color:white;">${user.substring(0, 1)}</button><div>&nbsp;&nbsp;&nbsp;&nbsp;</div>`+
     `            <div class="user-component__text">`+
     `               <h5 class="user-component__title">${user}</h5>`+
     `               <h6 class="user-component__subtitle">${message}</h6>`+

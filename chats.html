@@ -29,7 +29,7 @@
         <header class="screen-header">
             <h1 class="screen-header__title">메시지</h1>
             <div class="screen-header__icons">
-                <img src="images/search.png"/>
+                <img src="images/search(1).png"/>
                 <!--span><i class="fas fa-search fa-lg"></i></span>
                 <span><i class="far fa-comment fa-lg"></i></span>
                 <span><i class="far fa-comments fa-lg"></i></span>
@@ -75,11 +75,12 @@
                 </div></a-->
         </main>
 
-        <main class="main-screen" name="chatPlus" style="display:none">
+        <!--사용안함-->
+        <!--main class="main-screen" name="chatPlus" style="display:none">
         <div class="user-component chatUser-component">
             <div class="user-component__column">
                 <img 
-                src="images/avatar.png" 
+                src="images/avatar(2).png" 
                 class="user-component__avatar user-component__avatar"
                 alt=""/>
                 <div class="user-component__text">
@@ -90,12 +91,12 @@
             </div>
             <div class="user-component__column">&nbsp;</div>
         </div>
-        </main>
-        <div style="cursor:pointer" onclick="document.getElementsByName('chatPlus')[0].style.display='';document.getElementsByName('userName')[0].focus()" onmouseover="document.getElementsByClassName('fas fa-plus fa-lg')[0].style.display=''" onmouseleave="document.getElementsByClassName('fas fa-plus fa-lg')[0].style.display='none'">
+        </main-->
+        <!--div style="cursor:pointer" onclick="document.getElementsByName('chatPlus')[0].style.display='';document.getElementsByName('userName')[0].focus()" onmouseover="document.getElementsByClassName('fas fa-plus fa-lg')[0].style.display=''" onmouseleave="document.getElementsByClassName('fas fa-plus fa-lg')[0].style.display='none'">
             <div class="user-component__column" style="padding:17px;height:30px">
                 <i class="fas fa-plus fa-lg" style="display:none"></i>
             </div>
-        </div>
+        </div-->
         <div class="delete" name="deleteForm" style="z-index:1; display:none;">
             <input type="text" name="deleteCount" style="border: 0;" readonly/>
             
@@ -106,6 +107,14 @@
         </div>
 
         <!--/form-->
+        <nav class="nav">
+            <ul class="nav__list">
+                <li></li>
+                <li onclick="location.href='chat.html'" style="cursor:pointer;">
+                    <img src="images/chatplus(1).png" style="border-radius:50%;border:0;"/>
+                </li>
+            </ul>
+        </nav>
         <!--사용안함-->
         <nav class="nav" style="display:none">
             <ul class="nav__list">

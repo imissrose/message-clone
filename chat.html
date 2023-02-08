@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>채팅</title>
     </head>
-    <body id=chat-screen onload="loadMessage();replyForm.replyInputBox.focus();">
+    <body id=chat-screen onload="loadMessage();if(document.getElementsByName('userName')[0].value==='') document.getElementsByName('userName')[0].focus(); else replyForm.replyInputBox.focus();">
         <script src="https://kit.fontawesome.com/2ece379672.js" crossorigin="anonymous"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/ko.js"></script>
@@ -28,15 +28,15 @@
         </div>
         <header class="alt-header">
             <div class="alt_header__icon">
-                <a href="chats.html"><img src="images/arrow1.png"/><!--i class="fas fa-arrow-left fa-2x"--><!--i class="fas fa-angle-left fa-2x"></i--></a>
+                <a href="chats.html"><img src="images/arrow(1).png"/><!--i class="fas fa-arrow-left fa-2x"--><!--i class="fas fa-angle-left fa-2x"></i--></a>
             </div>
             <div class="alt_header__column">
                 <!--img src="images/avatar.png" /--><!--이미지와 타이틀 위치조정 실패 -->
                 <!--h1 class="alt-header__title">엄마</h1-->
-                <input type="text" class="alt-header__title" name="userName" style="width:100%;background-color:#F0F0F0;border:0;" onchange="modifyTitleUser();" />
+                <input type="text" class="alt-header__title" name="userName" placeholder="받는 사람" style="padding:7px;border-radius:25px;width:90%;background-color:#F0F0F0;border:0;" onblur="this.style='padding:7px;border-radius:25px;width:90%;background-color:#F0F0F0;border:0;';" onfocus="this.style='padding:7px;border-radius:25px;width:90%;background-color:#E1E1E1;border:var(--main-border);'" onchange="modifyTitleUser();" />
             </div>
             <div class="alt_header__icon">
-                <span><img src="images/phone1.png"/></span>
+                <span><img src="images/phone(1).png"/></span>
                 <!--span><i class="fas fa-phone fa-lg" style="transform:rotateY(0.5turn)"></i></span>
                 <span><i class="fas fa-search fa-lg"></i></span>
                 <span><i class="far fa-ellipsis-vertical fa-lg"></i></span-->
@@ -73,13 +73,14 @@
             <div class="reply__column">
               <input type="text" name="replyInputBox" style="background-color:#E1E1E1;" placeholder="메시지를 입력하세요." onkeypress="if(event.keyCode=='13'){event.preventDefault(); sendMessage(this.value);}" />
               <button style="background-color:#E1E1E1" onclick="event.preventDefault();setUser();">
-                <img src="images/plus.png" style="width:80%"/>
+                <img src="images/plus(1).png"/>
               </button>
             </div>
-            <div>&nbsp;</div>
+            <!--div>&nbsp;</div-->
             <div class="reply__column">
-                <button style="background-color:#5D7FFD" onclick="event.preventDefault(); sendMessage(this.form.replyInputBox.value);">
-                    <img name="sendImage" src="images/send3.png" style="border-radius:50%;width:115%"/>
+                <!--button style="background-color:#5D7FFD" onclick="event.preventDefault(); sendMessage(this.form.replyInputBox.value);"-->
+                <button onclick="event.preventDefault(); sendMessage(this.form.replyInputBox.value);">
+                    <img name="sendImage" src="images/send(2).png" style="border-radius:50%;width:140%"/>
                 </button>
             </div>
         </form>

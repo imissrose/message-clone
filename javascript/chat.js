@@ -3,7 +3,7 @@ let friendSetArr = [];
 let deleteCount = 0;
 let titleUser = "";
 let user = "나";
-let imagePath = "images/avatar.png";
+let imagePath = "images/avatar(2).png";
 
 function setUser() {
     //s = document.getElementsByClassName('far fa-smile fa-lg')[0];
@@ -40,13 +40,16 @@ function loadMessage() {
     }
 
     let messagesHTML = "";
-    let messageHTML = 
-    `<div class="chat__timestamp">`+
-    `오늘`+
-    //`    2023년 2월 2일 목요일`+
-    //`    ${moment().format('LLLL').substr(0, moment().format('LLLL').length-8)}`+
-    //`    ${"2023년 1월 3일 금요일 오후 1:00".substr(0, "2023년 1월 3일 금요일 오후 1:00".length-8)}`+
-    `</div>`;
+    let messageHTML = "";
+    if(titleUser != null && titleUser != "") {
+        messageHTML = 
+        `<div class="chat__timestamp">`+
+        `오늘`+
+        //`    2023년 2월 2일 목요일`+
+        //`    ${moment().format('LLLL').substr(0, moment().format('LLLL').length-8)}`+
+        //`    ${"2023년 1월 3일 금요일 오후 1:00".substr(0, "2023년 1월 3일 금요일 오후 1:00".length-8)}`+
+        `</div>`;
+    }
 
     messagesHTML = messagesHTML + messageHTML;
 
@@ -84,6 +87,10 @@ function loadMessage() {
 }
 
 function sendMessage(message) {
+    if(titleUser == null || titleUser ==="") {
+        return false;
+    }
+
     //let messageSetArr = [];
     let time = moment(Date()).format('LT');
     //let user = "나";
@@ -138,7 +145,8 @@ function getMessageHTML(id, user, imagePath, time, message) {
         messageHTML = 
         `<div class="message-row" id="${id}">`+
         `    <input type="checkbox" name="deleteCheckBox" style="display:none;" value="${id}" onChange="displayDeleteCount(this)"/>`+
-        `    <img src="images/avatar.png" />`+
+        //`    <img src="images/avatar(2).png"/>`+
+        `    <button style="width:40px;height:40px;border-radius:50%;background-color:#BFBFBF;border:0;font-size:20px;color:white;">${titleUser.substring(0, 1)}</button><div>&nbsp;&nbsp;</div>`+
         //`    <img src="${imagePath}" />`+
         `    <div class="message-row__content">`+
         //`      <span class="message__author">${user}</span>`+
