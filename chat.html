@@ -71,7 +71,8 @@
         <div>&nbsp;</div><div>&nbsp;</div>
         <form class="reply" name="replyForm">
             <div class="reply__column">
-              <input type="text" name="replyInputBox" style="background-color:#E1E1E1;" placeholder="메시지를 입력하세요." onkeypress="if(event.keyCode=='13'){event.preventDefault(); sendMessage(this.value);}" />
+              <!--input type="text" name="replyInputBox" style="background-color:#E1E1E1;" placeholder="메시지를 입력하세요." ondblclick="setUser();" onkeypress="if(event.keyCode=='13'){event.preventDefault(); sendMessage(this.value);}" /-->
+              <textarea name="replyInputBox" style="background-color:#E1E1E1;" placeholder="메시지를 입력하세요." ondblclick="setUser();" onkeypress="if(event.keyCode=='13'){event.preventDefault(); sendMessage(this.value);}"></textarea>
               <button style="background-color:#E1E1E1" onclick="event.preventDefault();setUser();">
                 <img src="images/plus(1).png"/>
               </button>

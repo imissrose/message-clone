@@ -134,7 +134,7 @@ function getMessageHTML(id, user, imagePath, time, message) {
         `<div class="message-row message-row--own" id="${id}">`+
         `    <div class="message-row__content">`+
         `    <div class="message__info">`+
-        `        <span class="message__bubble" style="background-color:#5D7FFD;color:white;">${message}</span>`+
+        `        <span class="message__bubble" style="background-color:#5D7FFD;color:white;" onmouseup="document.execCommand('copy');">${message}</span>`+
         `        <span class="message__time">${time}</span>`+
         `    </div>`+
         `    </div>`+
@@ -235,3 +235,12 @@ function displayDeleteCount(obj) {
 function modifyTitleUser() {
     loadMessage();
 }
+
+/*
+function copyToClipBoard() {
+    var content = document.getElementById('textArea');
+    content.select();
+    content.setSelectionRange(0, 99999);   // 모바일 브라우저(ios)에서의 동작을 위한 추가코드
+    document.execCommand('copy');
+    content.setSelectionRange(0, 0);       // 모바일 브라우저(ios)에서의 동작을 위한 추가코드
+}*/
