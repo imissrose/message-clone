@@ -156,7 +156,7 @@ function getMessageHTML(id, user, imagePath, time, message) {
         messageHTML = 
         `<div class="message-row" id="${id}">`+
         `    <input type="checkbox" name="deleteCheckBox" style="display:none;" value="${id}" onChange="displayDeleteCount(this)"/>`+
-        `    <div style="position: relative;"><img src="images/gray.png" style="z-index:0;"/><div style="position:absolute;top:10.5px;left:9.5px;font-size:20px;color:white;">${titleUser.substring(0, 1)}</div></div>`+
+        `    <div style="position: relative;"><img src="images/gray.png" style="z-index:0;"/><div style="position:absolute;top:10.5px;left:10px;font-size:20px;color:white;">${titleUser.substring(0, 1)}</div></div>`+
         //`    <button style="width:40px;height:40px;border-radius:50%;background-color:#BFBFBF;border:0;font-size:20px;color:white;resize:none;">${titleUser.substring(0, 1)}</button><div>&nbsp;&nbsp;</div>`+
         //`    <img src="${imagePath}" />`+
         `    <div class="message-row__content">`+
