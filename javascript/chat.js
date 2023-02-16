@@ -157,7 +157,7 @@ function getMessageHTML(id, user, imagePath, time, message) {
         `<div class="message-row" id="${id}">`+
         `    <input type="checkbox" name="deleteCheckBox" style="display:none;" value="${id}" onChange="displayDeleteCount(this)"/>`+
         //`    <img src="images/avatar(2).png"/>`+
-        `    <button style="width:40px;height:40px;border-radius:50%;background-color:#BFBFBF;border:0;font-size:20px;color:white;">${titleUser.substring(0, 1)}</button><div>&nbsp;&nbsp;</div>`+
+        `    <button style="width:40px;height:40px;border-radius:50%;background-color:#BFBFBF;border:0;font-size:20px;color:white;resize:none;">${titleUser.substring(0, 1)}</button><div>&nbsp;&nbsp;</div>`+
         //`    <img src="${imagePath}" />`+
         `    <div class="message-row__content">`+
         //`      <span class="message__author">${user}</span>`+
