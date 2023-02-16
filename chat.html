@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="ko" oncontextmenu="event.preventDefault()">
+<html lang="ko" oncontextmenu="if(!isMobile) event.preventDefault();">
     <head>
         <link rel="stylesheet" href="css/style.css">
         <meta charset="UTF-8">
@@ -71,11 +71,13 @@
         <div>&nbsp;</div><div>&nbsp;</div>
         <form class="reply" name="replyForm">
             <div class="reply__column">
+              <div class="reply__box">
               <!--input type="text" name="replyInputBox" style="background-color:#E1E1E1;" placeholder="메시지를 입력하세요." ondblclick="setUser();" onkeypress="if(event.keyCode=='13'){event.preventDefault(); sendMessage(this.value);}" /-->
               <textarea name="replyInputBox" style="background-color:#E1E1E1;" placeholder="메시지를 입력하세요." ondblclick="setUser();" onkeypress="if(event.keyCode=='13'){event.preventDefault(); sendMessage(this.value);}"></textarea>
               <button style="background-color:#E1E1E1" onclick="event.preventDefault();setUser();">
                 <img src="images/plus(1).png"/>
               </button>
+              </div>
             </div>
             <!--div>&nbsp;</div-->
             <div class="reply__column">

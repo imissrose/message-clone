@@ -5,6 +5,16 @@ let titleUser = "";
 let user = "나";
 let imagePath = "images/avatar(2).png";
 
+// 모바일 여부
+var isMobile = false;
+ 
+// PC 환경
+var filter = "win16|win32|win64|mac";
+ 
+if (navigator.platform) {
+    isMobile = filter.indexOf(navigator.platform.toLowerCase()) < 0;
+}
+
 function setUser() {
     //s = document.getElementsByClassName('far fa-smile fa-lg')[0];
     sw = document.getElementsByName('sendImage')[0];
@@ -134,7 +144,8 @@ function getMessageHTML(id, user, imagePath, time, message) {
         `<div class="message-row message-row--own" id="${id}">`+
         `    <div class="message-row__content">`+
         `    <div class="message__info">`+
-        `        <span class="message__bubble" style="background-color:#5D7FFD;color:white;" onmouseup="document.execCommand('copy');">${message}</span>`+
+        `        <span class="message__bubble" style="background-color:#5D7FFD;color:white;">${message}</span>`+
+        //`        <span class="message__bubble" style="background-color:#5D7FFD;color:white;" onmouseup="copyText=document.execCommand('copy');">${message}</span>`+
         `        <span class="message__time">${time}</span>`+
         `    </div>`+
         `    </div>`+
@@ -152,6 +163,7 @@ function getMessageHTML(id, user, imagePath, time, message) {
         //`      <span class="message__author">${user}</span>`+
         `      <div class="message__info">`+
         `        <span class="message__bubble">${message}</span>`+
+        //`        <span class="message__bubble" onmouseup="copyText=document.execCommand('copy');">${message}</span>`+
         `        <span class="message__time">${time}</span>`+
         `      </div>`+
         `    </div>`+
