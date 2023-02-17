@@ -146,7 +146,7 @@ function getMessageHTML(id, user, imagePath, time, message) {
         `    <div class="message__info">`+
         `        <span class="message__bubble" style="background-color:#5D7FFD;color:white;">${message}</span>`+
         //`        <span class="message__bubble" style="background-color:#5D7FFD;color:white;" onmouseup="copyText=document.execCommand('copy');">${message}</span>`+
-        `        <span class="message__time">${time}</span>`+
+        `        <span class="message__time" style="white-space: nowrap;">${time}</span>`+
         `    </div>`+
         `    </div>`+
         `    <input type="checkbox" name="deleteCheckBox" style="display:none;" value="${id}" onChange="displayDeleteCount(this)"/>`+
@@ -156,7 +156,7 @@ function getMessageHTML(id, user, imagePath, time, message) {
         messageHTML = 
         `<div class="message-row" id="${id}">`+
         `    <input type="checkbox" name="deleteCheckBox" style="display:none;" value="${id}" onChange="displayDeleteCount(this)"/>`+
-        `    <div style="position: relative;"><img src="images/gray.png" style="z-index:0;"/><div style="position:absolute;top:10.5px;left:10px;font-size:20px;color:white;">${titleUser.substring(0, 1)}</div></div>`+
+        `    <div style="position: relative;"><img src="images/gray.png"/><div style="position:absolute;top:10.5px;left:10px;font-size:20px;color:white;">${titleUser.substring(0, 1)}</div></div>`+
         //`    <button style="width:40px;height:40px;border-radius:50%;background-color:#BFBFBF;border:0;font-size:20px;color:white;resize:none;">${titleUser.substring(0, 1)}</button><div>&nbsp;&nbsp;</div>`+
         //`    <img src="${imagePath}" />`+
         `    <div class="message-row__content">`+
@@ -164,7 +164,7 @@ function getMessageHTML(id, user, imagePath, time, message) {
         `      <div class="message__info">`+
         `        <span class="message__bubble">${message}</span>`+
         //`        <span class="message__bubble" onmouseup="copyText=document.execCommand('copy');">${message}</span>`+
-        `        <span class="message__time" style="width:130px;">${time}</span>`+
+        `        <span class="message__time" style="white-space: nowrap;">${time}</span>`+
         `      </div>`+
         `    </div>`+
         `</div>`;
