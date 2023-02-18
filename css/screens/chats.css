@@ -42,12 +42,14 @@
 }
 
 .chat__timestamp {
-    color: #AEAEAE;
+    opacity: 0.5;
+    /*color: #8f8e8e;*/
+    /*color: #AEAEAE;*/
+    /*color: #FFFFFF;*/
     background-color: #F0F0F0;
     /*padding: 15px;*/
     padding: 11px;
-    /*font-size: 14px;*/
-    font-size: 16px;
+    font-size: 14px;
     border-radius: 25px;
     margin-bottom: 25px;
 }
@@ -82,18 +84,20 @@
 .message__bubble {
   background-color: white;
   /*padding: 13px;*/
-  padding: 10px;
+  padding: 7px;
   /*font-size: 18px;*/
   font-size: 14px;
   /*border-radius: 15px;*/
   border-radius: 15px;
   border-top-left-radius: 0px;
   margin-right: 5px;
+  line-height:20px;
 }
 
 .message__time/*,
 .message__author*/ {
-  opacity: 0.8;
+  /*opacity: 0.8;*/
+  opacity: 0.5;
   /*font-size: 14px;*/
   font-size: 11px;
   /*color: #474747;*/

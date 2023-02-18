@@ -51,17 +51,6 @@ function loadMessage() {
 
     let messagesHTML = "";
     let messageHTML = "";
-    if(titleUser != null && titleUser != "") {
-        messageHTML = 
-        `<div class="chat__timestamp">`+
-        `오늘`+
-        //`    2023년 2월 2일 목요일`+
-        //`    ${moment().format('LLLL').substr(0, moment().format('LLLL').length-8)}`+
-        //`    ${"2023년 1월 3일 금요일 오후 1:00".substr(0, "2023년 1월 3일 금요일 오후 1:00".length-8)}`+
-        `</div>`;
-    }
-
-    messagesHTML = messagesHTML + messageHTML;
 
     let user = "";
     let time = "";
@@ -81,6 +70,9 @@ function loadMessage() {
         time = messageSetArr[i].time;
         message = messageSetArr[i].message;
         //console.log(user, time, message);
+
+        // 채팅화면에 일자 생성
+        messagesHTML = messagesHTML + getDateHTML(i);
 
         // 채팅화면에 메시지 생성
         messageHTML = getMessageHTML(id, user, imagePath, time, message);
@@ -122,11 +114,17 @@ function sendMessage(message) {
     //messageSetArr = JSON.parse(localStorage.getItem('messageSetArr'));
     //console.log(messageSetArr);
 
-    // 채팅화면에 메시지 생성
+    // 기존 메시지 불러옴
     let messagesHTML = document.getElementsByClassName("main-screen main-chat")[0].innerHTML;
-    let messageHTML = getMessageHTML(id, user, imagePath, time, message);
 
-    messagesHTML = messagesHTML + messageHTML;
+    // 채팅화면에 일자 생성
+    messagesHTML = messagesHTML + getDateHTML(messageSetArr.length-1);
+    //document.getElementsByClassName("main-screen main-chat")[0].innerHTML = messagesHTML;
+    //console.log("일자:"+messagesHTML);
+
+    // 채팅화면에 메시지 생성
+    messagesHTML = messagesHTML + getMessageHTML(id, user, imagePath, time, message);
+
     document.getElementsByClassName("main-screen main-chat")[0].innerHTML = messagesHTML;
 
     // inputBox 지움
@@ -134,6 +132,46 @@ function sendMessage(message) {
 
     // 스크롤 내리기
     window.scrollTo(0, document.body.scrollHeight);
+}
+
+function getDateHTML(idx) {
+    let messageHTML = "";
+
+    if(titleUser === null || titleUser === "") {
+        return "";
+    }
+
+    if(idx > 0 && moment(new Date(parseInt(messageSetArr[idx-1].id))).format('L') === moment(new Date(parseInt(messageSetArr[idx].id))).format('L')) {
+        return "";
+    }
+
+    if(messageSetArr.length === 0 || moment(Date()).format('L') === moment(new Date(parseInt(messageSetArr[idx].id))).format('L')) {
+        messageHTML = 
+        `<div class="chat__timestamp">`+
+        `오늘`+
+        //`    2023년 2월 2일 목요일`+
+        //`    ${moment().format('LLLL').substr(0, moment().format('LLLL').length-8)}`+
+        //`    ${"2023년 1월 3일 금요일 오후 1:00".substr(0, "2023년 1월 3일 금요일 오후 1:00".length-8)}`+
+        `</div>`;
+    } else if(moment(Date()).format('YYYY') === moment(new Date(parseInt(messageSetArr[idx].id))).format('YYYY')) {
+        let yyyymmdd_week = moment(new Date(parseInt(messageSetArr[idx].id))).format('LLLL');
+        let yyyymmdd = moment(new Date(parseInt(messageSetArr[idx].id))).format('LL');
+        messageHTML = 
+        `<div class="chat__timestamp">`+
+        `${yyyymmdd.substring(6)} (${yyyymmdd_week.substr(0, moment().format('LLLL').length-8).replace(yyyymmdd, "").replace("요일", "").trim()})`+
+        //`${moment(new Date(parseInt(messageSetArr[0].id))).format('LLLL').substr(6, moment().format('LLLL').length-8-6)}`+
+        `</div>`;
+    } else {
+        let yyyymmdd_week = moment(new Date(parseInt(messageSetArr[idx].id))).format('LLLL');
+        let yyyymmdd = moment(new Date(parseInt(messageSetArr[idx].id))).format('LL');
+        messageHTML = 
+        `<div class="chat__timestamp">`+
+        `${yyyymmdd.substring(0)} (${yyyymmdd_week.substr(0, moment().format('LLLL').length-8).replace(yyyymmdd, "").replace("요일", "").trim()})`+
+        //`${moment(new Date(parseInt(messageSetArr[0].id))).format('LLLL').substr(6, moment().format('LLLL').length-8-6)}`+
+        `</div>`;
+    }
+
+    return messageHTML;
 }
 
 function getMessageHTML(id, user, imagePath, time, message) {
@@ -256,3 +294,116 @@ function copyToClipBoard() {
     document.execCommand('copy');
     content.setSelectionRange(0, 0);       // 모바일 브라우저(ios)에서의 동작을 위한 추가코드
 }*/
+
+
+function imageFileUpload(event, imageId, idx) {
+    let resize = new window.resize();
+    resize.init();
+    resize.photo(event.target.files[0], 100, 'file', function (resizedFile) {
+        console.log('resizedFile ' + resizedFile);  // blob
+    });
+    resize.photo(event.target.files[0], 100, 'dataURL', function (url) {
+        sendMessage(`<img src="${url}" style="height:100%;border-radius:0;">`);
+        console.log('url ' + url);
+
+        
+    });
+
+
+/*
+    for (let image of event.target.files) {
+        let reader = new FileReader();
+        reader.readAsDataURL(image);
+
+        reader.onload = function(event) {
+            //let img = document.createElement("img");
+            //img.setAttribute("src", event.target.result);
+            //document.querySelector("div#image_container").appendChild(img);
+            //document.querySelector("#profileImage").src = event.target.result;
+            document.getElementsByName(`${imageId}`)[idx].src = event.target.result;
+            //console.log(event.target.result);
+
+            if(imageId === "myImage") {
+                modifyMyProfile();
+            } else if(imageId === "friendImage") {
+                modifyFriendProfile(idx);
+            }
+        };
+
+    }
+    */
+    //localStorage.setItem(`image`, document.querySelector("#profileImage").src);
+    //document.querySelector("#profileImage").src = localStorage.getItem(`image`);
+}
+
+
+window.resize = (function () {
+	function Resize(){
+		
+	}
+	
+	Resize.prototype = {
+		init: function(outputQuality) {
+			this.outputQuality = (outputQuality === 'undefined' ? 1 : outputQuality);
+		},
+		photo: function(file, maxSize, outputType, callback) {
+			var _this = this;
+			var reader = new FileReader();
+			reader.onload = function (readerEvent) {
+				_this.resize(readerEvent.target.result, maxSize, outputType, callback);
+			};
+			reader.readAsDataURL(file);
+		},
+		resize: function(dataURL, maxSize, outputType, callback) {
+			var _this = this;
+			var image = new Image();
+
+			image.onload = function () {
+
+				// Resize image
+				var canvas = document.createElement('canvas'),
+					width = image.width,
+					height = image.height;
+				if (width > height) {//가로모드
+					if (width > maxSize) {
+						height *= maxSize / width;
+						width = maxSize;
+					}
+				} else {//세로모드
+					if (height > maxSize) {
+						width *= maxSize / height;
+						height = maxSize;
+					}
+				}
+				canvas.width = width;
+				canvas.height = height;
+					
+				canvas.getContext('2d').drawImage(image, 0, 0, width, height);
+					
+				_this.output(canvas, outputType, callback);
+			};
+			image.onerror=function(){
+				return;
+			};
+			image.src = dataURL;
+		},
+		output: function(canvas, outputType, callback) {
+			switch (outputType) {
+
+				case 'file':
+					canvas.toBlob(function (blob) {
+						callback(blob);
+					}, 'image/png', 0.8);
+					break;
+
+				case 'dataURL':
+					callback(canvas.toDataURL('image/png', 0.8));
+					break;
+
+			}
+		}
+	};//prototype end
+	
+	return Resize;
+
+}());

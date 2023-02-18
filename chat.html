@@ -74,9 +74,10 @@
               <div class="reply__box">
               <!--input type="text" name="replyInputBox" style="background-color:#E1E1E1;" placeholder="메시지를 입력하세요." ondblclick="setUser();" onkeypress="if(event.keyCode=='13'){event.preventDefault(); sendMessage(this.value);}" /-->
               <textarea name="replyInputBox" style="background-color:#E1E1E1;" placeholder="메시지를 입력하세요." ondblclick="setUser();" onkeypress="if(event.keyCode=='13'){event.preventDefault(); sendMessage(this.value);}"></textarea>
-              <button style="background-color:#E1E1E1" onclick="event.preventDefault();setUser();">
+              <button style="background-color:#E1E1E1" onclick="event.preventDefault();document.getElementsByName('imageUpload')[0].click();">
                 <img src="images/plus(1).png"/>
               </button>
+              <input type="file" name="imageUpload" style="display:none;" onchange="imageFileUpload(event, 'image', 0);">
               </div>
             </div>
             <!--div>&nbsp;</div-->
@@ -91,8 +92,8 @@
             <input type="text" name="deleteCount" style="border: 0;" readonly/>
             
             <div class="delete__column" style="align-items: center;">
-                <button onclick="deleteComments()">삭제</button>
-                <button onclick="hideDeleteCheck()">취소 </button>
+                <button onclick="deleteComments();">삭제</button>
+                <button onclick="hideDeleteCheck();location.reload();">취소 </button>
             </div>
         </div>
         <div id="no-mobile">

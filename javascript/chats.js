@@ -24,6 +24,10 @@ function loadChatList() {
             message = messageSetArr[messageSetArr.length-1].message;
             console.log(user, time, message);
 
+            if(message.substring(0, 8) === "<img src") {
+                message = "사진";
+            }
+
             //메시지 길면 ... 으로 생략
             /*if(message.length > 25) {
                 message = message.substring(0, 25) + "...";
